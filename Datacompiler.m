@@ -52,6 +52,6 @@ end
 fprintf('I am in data compiler \n');
 
  A = processing( A );
-[B,C,f,D] = Postprocessing( A ); % Here f is used for branch number
+[B,C,f,D] = Postprocessing( A ); % Here f is used for number of branches
 end
 
