@@ -18,7 +18,7 @@ function [ B,C,f,A,D ] = Datacompiler( lengths,t )
 %   * NewtonRaphson  - Uses JF to find the Theta for a Particular configuration
 %   * Processing     - Gives values of theta such that 0<theta<360 degrees
 %   * Postprocessing - Finds Branches ,segregates them .
-%% THIS PROGRAM IS CRAP AND IS VERY MUCH UNDER CONSTRUCTION
+%% 
 
 %%  Main Program
 %  Variables to be assigned before starting
