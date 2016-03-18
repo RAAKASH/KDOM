@@ -23,7 +23,7 @@ pause;
 m=17; % Kg
 k=45; % in mm
 d =[60,12.5,110/2,5]; % in mm
-d(4)=25;              % in mm
+d(4)=15;              % in mm
 
 f = l-d;              % in mm
 M=50;                 % in Nmm
