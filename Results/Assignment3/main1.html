@@ -1,0 +1,402 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-08"><meta name="DC.source" content="main1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">KDOM Assignment cum Project</a></li><li><a href="#2">test values</a></li><li><a href="#3">Plotting</a></li><li><a href="#4">Main program</a></li></ul></div><h2>KDOM Assignment cum Project<a name="1"></a></h2><p>Variable initializations</p><pre class="codeinput">m=4;                   <span class="comment">% m is mechanism's number of links</span>
+lengths = zeros(m,1);  <span class="comment">% contains the link lengths in order</span>
+theta = zeros(m,1);    <span class="comment">% contains the angles lengths in order</span>
+t = .01 ;              <span class="comment">% animation speed</span>
+e = 10^-5;             <span class="comment">%Control value parameter</span>
+d = 0  ;               <span class="comment">% dummy variable</span>
+</pre><h2>test values<a name="2"></a></h2><pre>Tested</pre><pre class="codeinput">lengths = [ 4;4;4;4];
+theta   = [0;80*pi/180;10*pi/180;80*pi/180];
+fprintf(<span class="string">'The values of theta should be \n'</span>);
+[0;3.316125578789226;-1.053289421689998e-12;3.316125578790280];
+fprintf(<span class="string">'****************Running program ************** \n'</span>);
+fprintf(<span class="string">'The values of theta are \n'</span>);
+theta = NewtonRaphson( lengths ,theta );
+theta;
+</pre><pre class="codeoutput">The values of theta should be 
+****************Running program ************** 
+The values of theta are 
+iteration number 4
+</pre><h2>Plotting<a name="3"></a></h2><pre class="codeinput">d = Plot( lengths,theta);
+</pre><img vspace="5" hspace="5" src="main1_01.png" alt=""> <h2>Main program<a name="4"></a></h2><pre>Variables to be assigned before starting
+1)lengths</pre><p>lengths = [(12^2+1.5^2)^.5;6;10;3];  %-Test lengths lengths = [28;5;19;15];              %-Test Lengths</p><pre class="codeinput">    lengths = [(12^2+1.5^2)^.5;3;10;6];  <span class="comment">%-Test Lengths</span>
+<span class="comment">%  lengths = [6;3;10;12];               %Grash off mechanism</span>
+<span class="comment">% lengths = [26;18;18;8];</span>
+ A = [0,0,0,0]; <span class="comment">%Data of theta</span>
+ f=0;           <span class="comment">%Flag for number of branches</span>
+
+[ B,C,f,A,D ] = Datacompiler( lengths,t );<span class="comment">% refer API for output variables</span>
+
+<span class="comment">%  d = Animation( lengths,B,C,f,1,.001 );</span>
+<span class="comment">%</span>
+<span class="comment">% xlswrite('Data',B,'section 1');</span>
+<span class="comment">% W=xlsread('Data','section 2')</span>
+w = [4;-2;1;2]*2*pi; <span class="comment">% link angular velocities in radians per secon</span>
+[W] = [B(:,2), Velacc( lengths,B,w )];
+[K,a] = Velacc( lengths,B,w );
+<span class="comment">% W = [theta(:,2),W];</span>
+plot(W(:,1),W(:,3))
+xlabel(<span class="string">'Angle of crank in degrees'</span>);
+ylabel(<span class="string">'Angular velocity of rocker in rad/s'</span>);
+<span class="comment">% pause;</span>
+plot(W(:,1),a(:,2))
+xlabel(<span class="string">'Angle of crank in degrees'</span>);
+ylabel(<span class="string">'Angular acceleration of rocker in rad/s^2'</span>);
+
+<span class="comment">% pause;</span>
+<span class="comment">%  xlswrite('Data',B,'angles');</span>
+<span class="comment">%  xlswrite('Data',W,'angularvelocities');</span>
+<span class="comment">%  xlswrite('Data',[W(:,1),a],'angularacc');</span>
+<span class="keyword">global</span> x y ;
+D =D *pi/180;
+aa = -cos(D(:,4)) + (sin(D(:,4))./tan(D(:,2)));
+L4 = (12^2 +1.5^2)^.5 ./(aa);
+
+x = (12^2+1.5^2)^.5 + L4.*cos(D(:,4));
+y =L4.*sin(D(:,4));
+<span class="comment">%  D =D *pi/180;</span>
+<span class="comment">%  aa = cos(D(:,2)) - (sin(D(:,2))./tan(D(:,4)));</span>
+<span class="comment">%  L4 = (12^2 +1.5^2)^.5 ./(aa);</span>
+<span class="comment">%</span>
+<span class="comment">%  x =  L4.*cos(D(:,2));</span>
+<span class="comment">%  y =  L4.*sin(D(:,2));</span>
+
+<span class="comment">%  d = Animation( lengths,B,C,f,1,.001 ,x,y);</span>
+
+plot(B(:,2),x);
+hold <span class="string">on</span>;
+plot(B(:,2),y);
+xlabel(<span class="string">'Angle of crank in degrees'</span>);
+ylabel(<span class="string">'coordinates of I(31)'</span>);
+legend(<span class="string">'x - cordinate'</span>,<span class="string">'y - cordinate'</span>);
+</pre><pre class="codeoutput">iteration number 8
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+iteration number 3
+I am in data compiler 
+</pre><img vspace="5" hspace="5" src="main1_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%  KDOM Assignment cum Project
+% Variable initializations
+m=4;                   % m is mechanism's number of links 
+lengths = zeros(m,1);  % contains the link lengths in order
+theta = zeros(m,1);    % contains the angles lengths in order
+t = .01 ;              % animation speed 
+e = 10^-5;             %Control value parameter
+d = 0  ;               % dummy variable 
+
+%% test values
+%  Tested 
+lengths = [ 4;4;4;4];
+theta   = [0;80*pi/180;10*pi/180;80*pi/180];
+fprintf('The values of theta should be \n');
+[0;3.316125578789226;-1.053289421689998e-12;3.316125578790280];
+fprintf('****************Running program ************** \n');
+fprintf('The values of theta are \n');
+theta = NewtonRaphson( lengths ,theta );
+theta;
+
+%% Plotting
+d = Plot( lengths,theta);
+
+%%        Main program
+%  Variables to be assigned before starting
+%  1)lengths   
+% 
+% lengths = [(12^2+1.5^2)^.5;6;10;3];  %-Test lengths 
+% lengths = [28;5;19;15];              %-Test Lengths
+    lengths = [(12^2+1.5^2)^.5;3;10;6];  %-Test Lengths
+%  lengths = [6;3;10;12];               %Grash off mechanism
+% lengths = [26;18;18;8];
+ A = [0,0,0,0]; %Data of theta
+ f=0;           %Flag for number of branches
+
+[ B,C,f,A,D ] = Datacompiler( lengths,t );% refer API for output variables
+    
+%  d = Animation( lengths,B,C,f,1,.001 );   
+%     
+% xlswrite('Data',B,'section 1');
+% W=xlsread('Data','section 2')
+w = [4;-2;1;2]*2*pi; % link angular velocities in radians per secon
+[W] = [B(:,2), Velacc( lengths,B,w )];
+[K,a] = Velacc( lengths,B,w );
+% W = [theta(:,2),W];
+plot(W(:,1),W(:,3))
+xlabel('Angle of crank in degrees');
+ylabel('Angular velocity of rocker in rad/s');
+% pause;
+plot(W(:,1),a(:,2))
+xlabel('Angle of crank in degrees');
+ylabel('Angular acceleration of rocker in rad/s^2');
+
+% pause;
+%  xlswrite('Data',B,'angles');
+%  xlswrite('Data',W,'angularvelocities');
+%  xlswrite('Data',[W(:,1),a],'angularacc');
+global x y ;
+D =D *pi/180;
+aa = -cos(D(:,4)) + (sin(D(:,4))./tan(D(:,2)));
+L4 = (12^2 +1.5^2)^.5 ./(aa);
+
+x = (12^2+1.5^2)^.5 + L4.*cos(D(:,4));
+y =L4.*sin(D(:,4));
+%  D =D *pi/180;
+%  aa = cos(D(:,2)) - (sin(D(:,2))./tan(D(:,4)));
+%  L4 = (12^2 +1.5^2)^.5 ./(aa);
+%  
+%  x =  L4.*cos(D(:,2));
+%  y =  L4.*sin(D(:,2));
+ 
+%  d = Animation( lengths,B,C,f,1,.001 ,x,y); 
+
+plot(B(:,2),x);
+hold on;
+plot(B(:,2),y);
+xlabel('Angle of crank in degrees');
+ylabel('coordinates of I(31)');
+legend('x - cordinate','y - cordinate');
+##### SOURCE END #####
+--></body></html>
